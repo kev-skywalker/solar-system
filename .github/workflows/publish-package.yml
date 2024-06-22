@@ -1,0 +1,32 @@
+name: Publish Package
+
+on:
+  release:
+    types: published
+
+jobs:
+    test-publish-package:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            packages: write
+        steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v4
+        # Setup .npmrc file to publish to Github Packages
+
+        - name: Setup Node.js Version - 20.x
+          uses: actions/setup-node@v4
+          with:
+            node-version: '20.x'
+            registry-url: 'https://npm.pkg.github'
+            # Defaults to the user or oranization that owns the workflow file
+            #scope: '@kev-skywalker'
+
+        - name: Install Dependencies
+          run: npm install
+
+        - name: Publish to Github Registry
+          run: npm publish
+          env:
+            NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
