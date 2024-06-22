@@ -39,7 +39,9 @@ jobs:
         
         - name: Archive Test Result
           #if the outcome status of the previous step is failure, then the next step will still run
-          if: failure () && (steps.nodejs-unit-testing-step.outcome == 'failure' || steps.nodejs-unit-testing-step.outcome == 'success') 
+          #if: failure() && (steps.nodejs-unit-testing-step.outcome == 'failure' || steps.nodejs-unit-testing-step.outcome == 'success') 
+          #this step will always run even if the previous status step is success or failure
+          if: always()
           uses: actions/upload-artifact@v3
           with:
             name: Mocha-Test-Result
