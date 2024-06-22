@@ -1,6 +1,5 @@
 {
-  "name": "@kev-skywalker/solar-system", #in order to publish packages on Github Packges
-  "version": "6.7.6",
+  "name": "@kev-skywalker/solar-system",
   "author": "Siddharth Barahalikar <barahalikar.siddharth@gmail.com>",
   "homepage": "https://www.linkedin.com/in/barahalikar-siddharth/",
   "license": "MIT",
