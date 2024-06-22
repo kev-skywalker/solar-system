@@ -33,6 +33,12 @@ jobs:
         - name: install Dependencies
           run: npm install
 
+        - name: Cache NPM dependencies
+          uses: actions/cache@v3
+          with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-module-${{ hashFiles('package-lock.json') }}
+
         - name: Unit Testing
           id:  nodejs-unit-testing-step #set id in order to bypass the failure of the current step
           run: npm test
