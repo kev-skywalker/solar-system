@@ -179,6 +179,9 @@ jobs:
           name: Deployment on dev environment
           needs: docker
           uses: ./.github/workflows/reuse-deployment.yml
+          secrets:
+            k8s-kubeconfig: ${{ secrets.KUBECONFIG}}
+            mongodb-password: ${{ secrets.MONGO_PASSWORD }}
 
     dev-integration-testing:
         #this job will only run the current branch contains "feature/"
