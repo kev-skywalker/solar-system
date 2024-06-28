@@ -7,9 +7,9 @@ on:
 jobs:
     reuse-deploy:
         environment:
-        name: development
-        #copied from job outputs layer in order to easily get it
-        url: https://${{ steps.step-set_ingress_host_url.outputs.APP_INGRESS_HOST }}
+           name: development
+           #copied from job outputs layer in order to easily get it
+           url: https://${{ steps.step-set_ingress_host_url.outputs.APP_INGRESS_HOST }}
 
         runs-on: ubuntu-latest
         # Map a step output to a job output
