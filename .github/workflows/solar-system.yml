@@ -180,7 +180,7 @@ jobs:
           needs: docker
           uses: ./.github/workflows/reuse-deployment.yml
           secrets:
-            k8s-kubeconfig: ${{ secrets.KUBECONFIG}}
+            k8s-kubeconfig: ${{ secrets.KUBECONFIGv}}
             mongodb-password: ${{ secrets.MONGO_PASSWORD }}
 
     dev-integration-testing:
@@ -203,6 +203,9 @@ jobs:
           name: Deployment on prod environment
           needs: docker
           uses: ./.github/workflows/reuse-deployment.yml
+          secrets:
+            k8s-kubeconfig: ${{ secrets.KUBECONFIGv}}
+            mongodb-password: ${{ secrets.MONGO_PASSWORD }}
     
     prod-integration-testing:
         if: github.ref == 'refs/head/main'
