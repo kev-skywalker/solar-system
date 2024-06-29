@@ -223,7 +223,7 @@ jobs:
         steps:
           - name: Test URL Output using CURL and JQ
             env:
-              URL: ${{ needs.prod-deploy.outputs.APP_INGRESS_HOST }}
+              URL: ${{ needs.prod-deploy.outputs.application-url }}
             run: |
               echo ${URL}
               echo "----------------------------"
