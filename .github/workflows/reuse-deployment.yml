@@ -3,7 +3,7 @@ name: Deployment - Reusable Workflow
 on:
     workflow_call:
       inputs:
-        mongpdb-uri:
+        mongodb-uri:
           required: true
           type: string
         kubectl-version:
