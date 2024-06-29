@@ -89,7 +89,7 @@ jobs:
           run: |
             echo --------create MongoDB Secret---------
             kubectl -n ${{ vars.NAMESPACE }} create secret mongo-db-creds \
-            --from-literal=MONGO_URI=${{ inputs.mongpdb-uri }} \
+            --from-literal=MONGO_URI=${{ inputs.mongodb-uri }} \
             --from-literal=MONGO_USERNAME=${{ vars.MONGO_USERNAME }} \
             --from-literal=MONGO_PASSWORD=${{ secrets.mongodb-password }} \
             --save-config \
