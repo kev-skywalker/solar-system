@@ -223,7 +223,7 @@ jobs:
           if: contains(github.ref, 'feature/')
           name: Deployment on dev environment
           needs: docker
-          uses: ./.github/workflows/reuse-deployment.yml
+          uses: kev-skywalker/solar-system/.github/workflows/reuse-deployment.yml
           secrets:
             k8s-kubeconfig: ${{ secrets.KUBECONFIGv}}
             mongodb-password: ${{ secrets.MONGO_PASSWORD }}
@@ -251,7 +251,7 @@ jobs:
           if: github.ref == 'refs/head/main'
           name: Deployment on prod environment
           needs: docker
-          uses: ./.github/workflows/reuse-deployment.yml
+          uses: kev-skywalker/solar-system/.github/workflows/reuse-deployment.yml
           secrets:
             k8s-kubeconfig: ${{ secrets.KUBECONFIGv}}
             mongodb-password: ${{ secrets.MONGO_PASSWORD }}
