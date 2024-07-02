@@ -125,7 +125,6 @@ jobs:
           uses: actions/download-artifact@v3
           with:
             name: Code-Coverage-Result
-            path: cobertura-coverage.xml
 
         - name: Merge Test files
           run: |
