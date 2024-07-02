@@ -41,18 +41,22 @@ jobs:
           with:
             node-version: ${{ matrix.nodejs_version }}
 
-        - name: Cache NPM dependencies
-          uses: actions/cache@v3
-          with:
-            path: ~/.npm
-            key: ${{ runner.os }}-node-module-${{ hashFiles('package-lock.json') }}
+        # - name: Cache NPM dependencies
+        #   uses: actions/cache@v3
+        #   with:
+        #     path: ~/.npm
+        #     key: ${{ runner.os }}-node-module-${{ hashFiles('package-lock.json') }}
         
-        - name: install Dependencies
-          run: npm install
+        # - name: install Dependencies
+        #   run: npm install
 
-        - name: Unit Testing
-          id:  nodejs-unit-testing-step #set id in order to bypass the failure of the current step
-          run: npm test
+        # - name: Unit Testing
+        #   id:  nodejs-unit-testing-step #set id in order to bypass the failure of the current step
+        #   run: npm test
+        - name: composite Action - Cache & Install NPM packages
+          uses: .github/custom-actions/npm-action/action.yml
+          with:
+            path-of-folder: node_modules
         
         - name: Archive Test Result
           #if the outcome status of the previous step is failure, then the next step will still run
@@ -90,14 +94,18 @@ jobs:
         #  uses: actions/setup-node@v3
         #  with:
         #    node-version: 18
-        - name: Cache NPM dependencies
-          uses: actions/cache@v3
-          with:
-            path: ~/.npm
-            key: ${{ runner.os }}-node-module-${{ hashFiles('package-lock.json') }}
+        # - name: Cache NPM dependencies
+        #   uses: actions/cache@v3
+        #   with:
+        #     path: ~/.npm
+        #     key: ${{ runner.os }}-node-module-${{ hashFiles('package-lock.json') }}
 
-        - name: install Dependencies
-          run: npm install
+        # - name: install Dependencies
+        #   run: npm install
+        - name: composite Action - Cache & Install NPM packages
+          uses: .github/custom-actions/npm-action/action.yml
+          with:
+            path-of-folder: node_modules
 
         - name: check code coverage
           continue-on-error: true
