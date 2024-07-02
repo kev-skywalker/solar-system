@@ -54,7 +54,7 @@ jobs:
         #   id:  nodejs-unit-testing-step #set id in order to bypass the failure of the current step
         #   run: npm test
         - name: composite Action - Cache & Install NPM packages
-          uses: kev-skywalker/solar-system/.github/custom-actions/npm-action/action.yml
+          uses: ./.github/custom-actions/npm-action/action.yml
           with:
             path-of-folder: node_modules
         
@@ -103,7 +103,7 @@ jobs:
         # - name: install Dependencies
         #   run: npm install
         - name: composite Action - Cache & Install NPM packages
-          uses: kev-skywalker/solar-system/.github/custom-actions/npm-action/action.yml
+          uses: ./.github/custom-actions/npm-action/action.yml
           with:
             path-of-folder: node_modules
 
